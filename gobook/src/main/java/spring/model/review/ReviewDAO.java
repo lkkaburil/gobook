@@ -8,7 +8,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import www.mybatis.MyAppSqlConfig;
 
-
 public class ReviewDAO implements IDAO {
 	
 	private static SqlSessionFactory sqlMapper;
