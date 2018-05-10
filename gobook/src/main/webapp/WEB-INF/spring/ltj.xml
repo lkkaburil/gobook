@@ -4,25 +4,31 @@
     "http://tiles.apache.org/dtds/tiles-config_2_0.dtd"> 
 
 <tiles-definitions> 
+
+    	
+    <definition name="/reservation" extends="remain">  
+        <put-attribute name="title" value="Prologue by HTML5 UP" ></put-attribute>  
+         <put-attribute name="body" value="/WEB-INF/views/c_home.jsp" />  
+      </definition>   
     
-    <definition name="/service" extends="main"> 
-        <put-attribute name="title" value="고북닷컴" ></put-attribute> 
-        <put-attribute name="body" value="/WEB-INF/views/home.jsp" /> 
-    </definition>   
+<!--     <definition name="/service" extends="main">  -->
+<!--         <put-attribute name="title" value="고북닷컴" ></put-attribute>  -->
+<!--         <put-attribute name="body" value="/WEB-INF/views/home.jsp" />  -->
+<!--     </definition>    -->
      
-     <definition name="/service/service" extends="main"> 
+     <definition name="/reservation/reservation" extends="remain"> 
         <put-attribute name="title" value="서비스 목록" ></put-attribute> 
-        <put-attribute name="body" value="/WEB-INF/views/service/service.jsp" /> 
+        <put-attribute name="body" value="/WEB-INF/views/reservation/reservation.jsp" /> 
     </definition>   
     
-      <definition name="/service/service2" extends="main"> 
+      <definition name="/reservation/reservation2" extends="remain"> 
         <put-attribute name="title" value="상세 서비스 목록" ></put-attribute> 
-        <put-attribute name="body" value="/WEB-INF/views/service/service2.jsp" /> 
+        <put-attribute name="body" value="/WEB-INF/views/reservation/reservation2.jsp" /> 
     </definition>   
     
-     <definition name="/service/service3" extends="main"> 
+     <definition name="/reservation/reservation3" extends="remain"> 
         <put-attribute name="title" value="서비스 목록" ></put-attribute> 
-        <put-attribute name="body" value="/WEB-INF/views/service/service3.jsp" /> 
+        <put-attribute name="body" value="/WEB-INF/views/reservation/reservation3.jsp" /> 
     </definition>   
            
    

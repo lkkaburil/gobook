@@ -1,21 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?> 
 <!DOCTYPE  tiles-definitions PUBLIC 
     "-//Aapche Software Foundation//DTD Tiles Configuration 2.0//EN" 
-    "http://tiles.apache.org/dtds/tiles-config_2_0.dtd"> 
+    "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 
-<tiles-definitions> 
-    
-	<definition name="main" template="/WEB-INF/template/template.jsp"> 
-        <put-attribute name="header" value="/WEB-INF/template/top.jsp" /> 
-        <put-attribute name="footer" value="/WEB-INF/template/bottom.jsp" /> 
-    </definition>   
-    <definition name="/home" extends="main"> 
-        <put-attribute name="title" value="고북닷컴" /> 
-        <put-attribute name="body" value="/WEB-INF/views/home.jsp" /> 
-    </definition>   
-     
-    
-     
-           
-   
+<tiles-definitions>
+
+	<definition name="main" template="/WEB-INF/template/template.jsp">
+	<put-attribute name="header" value="/WEB-INF/template/top.jsp" />
+	<put-attribute name="footer" value="/WEB-INF/template/bottom.jsp" />
+	</definition>
+
+<!-- 	<definition name="/home" extends="main"> -->
+<!-- 	<put-attribute name="title" value="고북닷컴" /> -->
+<!-- 	<put-attribute name="body" value="/WEB-INF/views/home.jsp" /> -->
+<!-- 	</definition> -->
+
+	<definition name="remain" template="/WEB-INF/c_template/template.jsp">
+		<put-attribute name="sidebar" value="/WEB-INF/c_template/side.jsp" />
+		<put-attribute name="c_footer" value="/WEB-INF/c_template/footer.jsp" />
+	</definition>
+
+	<definition name="/home" extends="remain">
+		<put-attribute name="title" value="Prologue by HTML5 UP" />
+		<put-attribute name="body" value="/WEB-INF/views/c_home.jsp" />
+	</definition>
+
+
+
+
 </tiles-definitions> 

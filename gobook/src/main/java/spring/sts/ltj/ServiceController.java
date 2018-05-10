@@ -35,20 +35,21 @@ public class ServiceController {
 		
 		return "home";
 	}
-	
-	@RequestMapping(value="/service/service",method=RequestMethod.GET)
-  	public String service() {
-  		return "/service/service";
-  	}
-	
-	@RequestMapping(value="/service/service2",method=RequestMethod.GET)
-  	public String service2() {
-  		return "/service/service2";
-  	}
-	
-	@RequestMapping(value="/service/service3",method=RequestMethod.GET)
-  	public String service3() {
-  		return "/service/service3";
-  	}
+//	
+//	
+//	@RequestMapping(value="/reservation/reservation",method=RequestMethod.GET)
+//  	public String service() {
+//  		return "/reservation/reservation";
+//  	}
+//	
+//	@RequestMapping(value="/reservation/reservation2",method=RequestMethod.GET)
+//  	public String service2() {
+//  		return "/reservation/reservation2";
+//  	}
+//	
+//	@RequestMapping(value="/reservation/reservation3",method=RequestMethod.GET)
+//  	public String service3() {
+//  		return "/reservation/reservation3";
+//  	}
 	
 }
