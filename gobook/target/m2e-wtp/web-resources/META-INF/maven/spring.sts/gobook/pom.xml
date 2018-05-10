@@ -14,6 +14,11 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
 		<!-- 인터페이스없이 transaction사용시 에러예방 -->
 		<dependency>
 			<groupId>cglib</groupId>

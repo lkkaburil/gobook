@@ -22,7 +22,7 @@ public class ServiceController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/service", method = RequestMethod.GET)
+	@RequestMapping(value ="/service", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
@@ -35,5 +35,20 @@ public class ServiceController {
 		
 		return "home";
 	}
+	
+	@RequestMapping(value="/service/service",method=RequestMethod.GET)
+  	public String service() {
+  		return "/service/service";
+  	}
+	
+	@RequestMapping(value="/service/service2",method=RequestMethod.GET)
+  	public String service2() {
+  		return "/service/service2";
+  	}
+	
+	@RequestMapping(value="/service/service3",method=RequestMethod.GET)
+  	public String service3() {
+  		return "/service/service3";
+  	}
 	
 }

@@ -2,57 +2,56 @@ package spring.model.service;
 
 import java.util.List;
 
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-import www.mybatis.MyAppSqlConfig;
-
-
+@Repository
 public class ServiceDAO {
 	
-	private static SqlSessionFactory sqlMapper;
+	@Autowired
+	private static SqlSessionTemplate mybatis;
 	
-	static{
-
-		sqlMapper = MyAppSqlConfig.getSqlMapInstance();
+	
+	
+	
+   public static void setMybatis(SqlSessionTemplate mybatis) {
+		ServiceDAO.mybatis = mybatis;
 	}
-	
-   public ServiceDTO read(int sv_num) {
+
+public ServiceDTO read(int sv_num) {
 		
-		return sqlMapper.openSession().selectOne("service.read", sv_num);
+		return mybatis.selectOne("service.read", sv_num);
 	}
    
    public List<ServiceDTO> list() {
-	   return sqlMapper.openSession().selectList("service.list");
+	   return mybatis.selectList("service.list");
    }
 
    public boolean update(ServiceDTO dto) {
-	   SqlSession session = sqlMapper.openSession();
+	 
 	   boolean flag = false;
-	   int cnt = session.update("service.update", dto);
+	   int cnt = mybatis.update("service.update", dto);
 	   if(cnt>0)flag=true;
-	   session.commit();
-	   session.close();
+	
 	   return flag;
    }
    
    public boolean create(ServiceDTO dto) {
 	   boolean flag = false;
-	   SqlSession session = sqlMapper.openSession();
-	   int cnt = session.insert("service.create", dto);
+
+	   int cnt = mybatis.insert("service.create", dto);
 	   if(cnt>0)flag=true;
-	   session.commit();
-	   session.close();
+	 
 	   return flag;
    }
 	
    public boolean delete(int sv_num) {
-	   SqlSession session = sqlMapper.openSession();
+	 
 	   boolean flag = false;  
-	   int cnt = session.delete("service.delete", sv_num);
+	   int cnt = mybatis.delete("service.delete", sv_num);
 	   if(cnt>0)flag=true;
-	   session.commit();
-	   session.close();
+	   
 	   return flag;
    }
 }

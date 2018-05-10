@@ -40,7 +40,7 @@ public class Service_imageTest {
 	public static void create(Service_imageDAO dao) {
 		Service_imageDTO dto = new Service_imageDTO();
 		
-	     dto.setSimg_filename("시바ㅈ같네");
+		 dto.setSimg_filename("시바ㅈ같네");
 	     dto.setSimg_filesize(1);
 	     dto.setSv_num(2);
 	     if(dao.create(dto)) {
