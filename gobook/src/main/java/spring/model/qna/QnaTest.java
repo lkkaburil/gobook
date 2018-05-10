@@ -15,6 +15,20 @@ public class QnaTest {
 		//update(dao);
 		//delete(dao);
 		//list(dao);
+		total(dao);
+		
+		
+		
+	}
+
+	private static void total(QnaDAO dao) {
+		Map map = new HashMap();
+		try {
+			System.out.println(dao.total(map));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 	}

@@ -46,9 +46,9 @@ public class NoticeTest {
 		int n_num = 1;
 		try {
 			if(dao.delete(n_num)) {
-				p("��������!");
+				p("삭제성공!");
 			}else {
-				p("��������");
+				p("삭제실패");
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -62,12 +62,12 @@ public class NoticeTest {
 		
 		try {
 			NoticeDTO dto = (NoticeDTO) dao.read(1);
-			dto.setN_title("����������");
-			dto.setN_content("õ�翴��;;");
+			dto.setN_title("제목 바껴라");
+			dto.setN_content("내용바껴라");
 			if(dao.update(dto)) {
-				p("��������");
+				p("업뎃 성공!");
 			}else {
-				p("������Ʈ����!");
+				p("업뎃 실패ㅠ");
 }
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -91,11 +91,11 @@ public class NoticeTest {
 	}
 
 	private static void p(NoticeDTO dto) {
-		System.out.println("��ȣ:" + dto.getN_num());
-		System.out.println("����:" + dto.getN_title());
-		System.out.println("����:" + dto.getN_content());
-		System.out.println("��ϳ�¥:" + dto.getN_wdate());
-		System.out.println("������ID:" + dto.getA_id());
+		System.out.println("번호:" + dto.getN_num());
+		System.out.println("제목:" + dto.getN_title());
+		System.out.println("내용:" + dto.getN_content());
+		System.out.println("작성일:" + dto.getN_wdate());
+		System.out.println("작성자:" + dto.getA_id());
 		System.out.println("-----------------------");
 		
 	}
@@ -103,16 +103,16 @@ public class NoticeTest {
 	private static void create(NoticeDAO dao) {
 		NoticeDTO dto = new NoticeDTO();
 		dto.setN_num(4);
-		dto.setN_title("�����Դϴ�");
-		dto.setN_content("õ��");
+		dto.setN_title("제목이드아아아아");
+		dto.setN_content("내용이드아아아");
 		//dto.setN_wdate("2018-05-03");
 		dto.setA_id("atest");
 		
 		try {
 			if(dao.create(dto)) {
-				p("����");
+				p("생성 성공!");
 			}else {
-				p("���Ф�");
+				p("생성 실패ㅠ");
 }
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

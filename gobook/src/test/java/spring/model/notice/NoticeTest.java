@@ -21,7 +21,13 @@ public class NoticeTest {
 	}
 
 	private static void total(NoticeDAO dao) {
-		// TODO Auto-generated method stub
+		Map map = new HashMap();
+		try {
+			System.out.println(dao.total(map));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 

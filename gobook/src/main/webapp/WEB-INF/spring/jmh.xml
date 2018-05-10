@@ -8,11 +8,28 @@
 	 
     <definition name="/notice" extends="main"> 
         <put-attribute name="title" value="고북닷컴" ></put-attribute> 
-        <put-attribute name="body" value="/WEB-INF/views/home.jsp" /> 
-    </definition>   
-     
+        <put-attribute name="body" value="/WEB-INF/views/notice/Notice.list.jsp" /> 
+    </definition> 
     
+    <definition name="/notice/create" extends="main"> 
+        <put-attribute name="title" value="고북닷컴" ></put-attribute> 
+        <put-attribute name="body" value="/WEB-INF/views/notice/Notice.create.jsp" /> 
+    </definition>   
+    
+    <definition name="/notice/read" extends="main"> 
+        <put-attribute name="title" value="고북닷컴" ></put-attribute> 
+        <put-attribute name="body" value="/WEB-INF/views/notice/Notice.read.jsp" /> 
+    </definition>  
+    
+    <definition name="/notice/update" extends="main"> 
+        <put-attribute name="title" value="고북닷컴" ></put-attribute> 
+        <put-attribute name="body" value="/WEB-INF/views/notice/Notice.update.jsp" /> 
+    </definition>    
      
+  	<definition name="/notice/delete" extends="main"> 
+        <put-attribute name="title" value="고북닷컴" ></put-attribute> 
+        <put-attribute name="body" value="/WEB-INF/views/notice/Notice.delete.jsp" /> 
+    </definition>    
            
    
 </tiles-definitions> 

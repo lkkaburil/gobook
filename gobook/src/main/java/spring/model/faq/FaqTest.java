@@ -14,10 +14,21 @@ public class FaqTest {
 		//read(dao);
 		//update(dao);
 		//delete(dao);
-		list(dao);
-		//total(dao);
+		//list(dao);
+		total(dao);
 		
 
+	}
+
+	private static void total(FaqDAO dao) {
+		Map map = new HashMap();
+		try {
+			System.out.println(dao.total(map));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	private static void delete(FaqDAO dao) {
