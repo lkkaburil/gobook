@@ -30,6 +30,36 @@
         <put-attribute name="title" value="서비스 목록" ></put-attribute> 
         <put-attribute name="body" value="/WEB-INF/views/reservation/reservation3.jsp" /> 
     </definition>   
+    
+    <definition name="/serviceimage" extends="main">  
+        <put-attribute name="title" value="Prologue by HTML5 UP" ></put-attribute>  
+         <put-attribute name="body" value="/WEB-INF/views/home.jsp" />  
+      </definition>  
+    
+     <definition name="/serviceimage/create" extends="main"> 
+        <put-attribute name="title" value="서비스 목록" ></put-attribute> 
+        <put-attribute name="body" value="/WEB-INF/views/service_image/serviceimage.jsp" /> 
+    </definition>  
+    
+     <definition name="/reservationM/list" extends="main"> 
+        <put-attribute name="title" value="서비스 목록" ></put-attribute> 
+        <put-attribute name="body" value="/WEB-INF/views/reservation/reservationM_list.jsp" /> 
+    </definition>
+    
+    <definition name="/reservationM/read" extends="main"> 
+        <put-attribute name="title" value="서비스 목록" ></put-attribute> 
+        <put-attribute name="body" value="/WEB-INF/views/reservation/reservationM_read.jsp" /> 
+    </definition>
+    
+    <definition name="/reservationM/update" extends="main"> 
+        <put-attribute name="title" value="서비스 목록" ></put-attribute> 
+        <put-attribute name="body" value="/WEB-INF/views/reservation/reservationM_update.jsp" /> 
+    </definition>
+    
+    <definition name="/reservationM/delete" extends="main"> 
+        <put-attribute name="title" value="서비스 목록" ></put-attribute> 
+        <put-attribute name="body" value="/WEB-INF/views/reservation/reservationM_delete.jsp" /> 
+    </definition>   
            
    
 </tiles-definitions> 

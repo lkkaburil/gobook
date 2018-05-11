@@ -17,10 +17,11 @@
 <title>Insert title here</title>
 <style type="text/css">
 div#ser {
-  top: 30px;
+  top: 50px;
   left: 5px;
   height:800px;
   width:1600px;
+  margin-left:300px;
   position:relative;
   float: left;
   display: flex;

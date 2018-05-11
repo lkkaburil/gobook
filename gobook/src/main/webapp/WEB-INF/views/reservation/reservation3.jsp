@@ -21,11 +21,12 @@
 <title>Insert title here</title>
 <style type="text/css">
 div#ser {
-  top: 30px;
+  top: 50px;
   left: 5px;
   height:800px;
   width:1600px;
   position:relative;
+  margin-left:300px;
   float: left;
   display: flex;
 }

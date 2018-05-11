@@ -30,6 +30,10 @@
 	   p:mybatis-ref="sqlSession"
 	/>
 	
+	<bean id="rdao" class="spring.model.reservation.ReservationDAO"
+	   p:mybatis-ref="sqlSession"
+	/>
+	
 	<bean id="imdao" class="spring.model.service_image.Service_imageDAO"
 	   p:mybatis-ref="sqlSession"
 	/>
