@@ -33,8 +33,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="create" parameterType="reviewDTO">
     	insert into review(re_num, re_title,re_content
     	,re_filename,re_filesize,re_rating,c_id, s_id,re_wdate)
-    	values((select nvl(max(re_num),0)+1 from review), #{re_title}, #{re_content},#{re_filename,jdbcType=VARCHAR},
-    	#{re_filesize},#{re_rating},#{c_id},#{s_id},sysdate)
+    	values((select nvl(max(re_num),0)+1 from review), #{re_title}, #{re_content},#{re_filename, jdbcType=VARCHAR},
+    	#{re_filesize, jdbcType=VARCHAR},#{re_rating, jdbcType=VARCHAR},#{c_id, jdbcType=VARCHAR},#{s_id, jdbcType=VARCHAR},sysdate)
+
     </select>
     
    <update id="update" parameterType="reviewDTO">
@@ -61,8 +62,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
     
     <select id="read" resultType="reviewDTO" parameterType="int">
-      select * from review 
-      where re_num = #{re_num}
+     select
+		re_num, re_count, re_title, re_content, re_wdate, re_like, re_filename, re_filesize
+		from
+		Review
+		where re_num = #{re_num}
     </select>
      
    	<select id="total" resultType="int" parameterType="Map">

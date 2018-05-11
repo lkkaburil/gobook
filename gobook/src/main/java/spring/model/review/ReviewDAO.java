@@ -22,13 +22,17 @@ public class ReviewDAO implements IReviewDAO {
 
 	@Override
 	public Object read(Object pk) throws Exception {
-		
+		System.out.println(pk);
 		return mybatis.selectOne("review.read", pk);
 	}
    @Override
    public boolean create(Object dto)throws Exception{
 		boolean flag = false;
-		int cnt = mybatis.insert("review.create",dto);
+		ReviewDTO rdto =(ReviewDTO)dto;
+		System.out.println(rdto.getRe_title());
+		rdto.setC_id("ctest");
+		rdto.setS_id("stest");
+		int cnt = mybatis.insert("review.create",rdto);
 		System.out.println(cnt);
 		if(cnt>0)flag = true;
 		
@@ -44,6 +48,10 @@ public class ReviewDAO implements IReviewDAO {
 	@Override
 	public boolean update(Object dto) throws Exception {
 		boolean flag = false;
+		ReviewDTO rdto =(ReviewDTO)dto;
+		System.out.println(rdto.getRe_title());
+		rdto.setC_id("ctest");
+		rdto.setS_id("stest");
 		int cnt = mybatis.update("review.update",dto);
 		if(cnt>0)flag=true;
 		
@@ -73,9 +81,12 @@ public class ReviewDAO implements IReviewDAO {
 		mybatis.update("review.upRe_count", re_num);
 	
 	}
+
+		
+	}
 	
 	
-}
+
 
 
 

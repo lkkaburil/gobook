@@ -20,17 +20,18 @@ function incheck(f){
 		f.title.focus();//커서를 옯긴다
 		
 		return false;
-	}
+	}/* 
 	if(f.content.value==""){
 		alert("내용을 입력하세요");
 		f.content.focus();//커서를 옯긴다
 		
 		return false;
-	}
+	} */
 	if (CKEDITOR.instances['content'].getData() == '') {
 	      window.alert('내용을 입력해 주세요.');
 	      CKEDITOR.instances['content'].focus();
 	      return false;
+	
 	}
 	
 	
@@ -55,7 +56,7 @@ function incheck(f){
 	onsubmit="return incheck(this)"
 	enctype="multipart/form-data"> 
   <TABLE class="table table-bordered">
-    <TR>
+  <tr>
       <TH>제목</TH>
       <TD><input type="text" name="re_title" ></TD>
     </TR>

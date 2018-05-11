@@ -23,8 +23,21 @@ public class ReviewController {
 	private ReviewDAO dao;
 	
 	@RequestMapping("/review/read")
-	public String read(ReviewDTO dto,Model model,HttpServletRequest request) throws Exception {
+	public String read(Model model,HttpServletRequest request) throws Exception {
 		
+		int re_num = Integer.parseInt(request.getParameter("re_num"));
+		dao.re_count(re_num);
+		ReviewDTO dto = (ReviewDTO) dao.read(re_num);
+		String re_content = dto.getRe_content();
+		re_content = re_content.replaceAll("\r\n", "<br>");
+		
+		model.addAttribute("dto", dto);
+		model.addAttribute("re_content", re_content);
+	
+		String col = request.getParameter("col");
+		String word = request.getParameter("word");
+		int nowPage = Integer.parseInt(request.getParameter("nowPage"));
+	
 		
 		return "/review/read";
 	}
