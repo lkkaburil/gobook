@@ -1,5 +1,7 @@
 package spring.model.review;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class ReviewDTO {
 	private int re_num;
 	private String re_title;
@@ -12,6 +14,17 @@ public class ReviewDTO {
 	private String s_id;
 	private String c_id;
 	private String re_wdate;
+	
+	private MultipartFile filenameMF;
+	
+	public MultipartFile getFilenameMF() {
+		return filenameMF;
+	}
+	public void setFilenameMF(MultipartFile filenameMF) {
+		this.filenameMF = filenameMF;
+	}
+
+	
 	
 	public int getRe_num() {
 		return re_num;
