@@ -11,64 +11,59 @@ import org.springframework.stereotype.Repository;
 public class NoticeDAO implements INoticeDAO {
 	
 	@Autowired
-	private static SqlSessionTemplate mybatis;
+	private SqlSessionTemplate mybatis;
 
-   
-
-public static void setMybatis(SqlSessionTemplate mybatis) {
-		NoticeDAO.mybatis = mybatis;
+	public void setMybatis(SqlSessionTemplate mybatis) {
+		this.mybatis = mybatis;
 	}
 
-@Override
-public boolean create(Object dto) throws Exception {
+	
+	@Override
+	public boolean create(Object dto) throws Exception {
 	boolean flag = false;
 	int cnt = mybatis.insert("notice.create", dto);
-	System.out.println(cnt);
+	System.out.println("cnt:"+cnt);
 	if(cnt>0)flag = true;
 	
 	return flag;
-}
+	}
 
-@Override
-public List list(Map map) throws Exception {
+	
+	@Override
+	public List list(Map map) throws Exception {
+		
 	List list = mybatis.selectList("notice.list", map);
 	return list;
-}
+	}
 
-@Override
-public Object read(Object pk) throws Exception {
+	@Override
+	public Object read(Object pk) throws Exception {
 	NoticeDTO dto = mybatis.selectOne("notice.read", pk);
 	return dto;
-}
+	}
 
-@Override
-public boolean update(Object dto) throws Exception {
+	
+	@Override
+	public boolean update(Object dto) throws Exception {
 	boolean flag = false;
 	int cnt = mybatis.update("notice.update", dto);
 	if(cnt>0)flag = true;
 	return flag;
-}
+	}
 
-@Override
-public boolean delete(Object pk) throws Exception {
+	
+	@Override
+	public boolean delete(Object pk) throws Exception {
 	boolean flag = false;
 	int cnt = mybatis.delete("notice.delete", pk);
 	if(cnt>0)flag = true;
 	return flag;
-}
+	}
 
-@Override
-public int total(Map map) throws Exception {
+	
+	@Override
+	public int total(Map map) throws Exception {
 	// TODO Auto-generated method stub
 	return 0;
-}
-
-   
-   }
-	
-
-
-
-
-
-
+	}
+}	

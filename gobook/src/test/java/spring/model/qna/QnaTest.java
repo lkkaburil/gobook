@@ -15,7 +15,9 @@ public class QnaTest {
 		//update(dao);
 		//delete(dao);
 		//list(dao);
-		//total(dao);
+		total(dao);
+		
+		
 		
 	}
 
@@ -27,6 +29,7 @@ public class QnaTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		
 	}
 

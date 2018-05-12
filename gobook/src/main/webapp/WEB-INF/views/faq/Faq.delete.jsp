@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<%  request.setCharacterEncoding("utf-8");%>
+<c:set var="root" value="${pageContext.request.contextPath }"/>      
  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
@@ -10,8 +13,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-function flist(){
-	var url = "./faq.list.jsp";
+function flist(faq_num){
+	var url = "${root}/faq/list";
+	url += "?faq_num="+faq_num;
+	url += "&col=${col}";
+	url += "&word=${word}";
+	url += "&nowPage=${nowPage}";
 	location.href = url;	
 }
 
@@ -21,7 +28,7 @@ function flist(){
 <body>
 <h3>정말 삭제하시겠습니까 ?</h3>
 
-<input type="button" class="btn btn-Default btn-md" onclick="flist()" value='삭제'/>
+<input type="button" class="btn btn-Default btn-md" onclick="flist('${dto.faq_num}')" value='삭제'/>
 <input type="button" class="btn btn-Default btn-md" onclick="history.back()" value='취소'/>
 </body>
 </html>

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<%  request.setCharacterEncoding("utf-8");%>
+<c:set var="root" value="${pageContext.request.contextPath }"/>      
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -20,43 +23,30 @@ container{
 text-align:center;
 margin:auto;
 }
-
 </style>
 <script type="text/javascript">
-	function realtimeClock() {
-		document.rtcForm.rtcInput.value = getTimeStamp();
-		setTimeout("realtimeClock()", 1000);
-	}
-
-	function getTimeStamp() { // 24시간제
-		var d = new Date();
-
-		var s = leadingZeros(d.getFullYear(), 4) + '-'
-				+ leadingZeros(d.getMonth() + 1, 2) + '-'
-				+ leadingZeros(d.getDate(), 2) + ' ' +
-
-				leadingZeros(d.getHours(), 2) + ':'
-				+ leadingZeros(d.getMinutes(), 2) + ':'
-				+ leadingZeros(d.getSeconds(), 2);
-
-		return s;
-	}
-
-	function leadingZeros(n, digits) {
-		var zero = '';
-		n = n.toString();
-
-		if (n.length < digits) {
-			for (i = 0; i < digits - n.length; i++)
-				zero += '0';
-		}
-		return zero + n;
-	}
+	function fupdate(faq_num){
+		var url = "${root}/faq/update";
+		url += "?faq_num="+faq_num;
+		url += "&col=${col}";
+		url += "&word=${word}";
+		url += "&nowPage=${nowPage}";	
+		location.href = url;
+}
+	
+	function fdelete(faq_num){
+		var url = "${root}/faq/delete";
+		url += "?faq_num="+faq_num;
+		url += "&col=${col}";
+		url += "&word=${word}";
+		url += "&nowPage=${nowPage}";	
+		location.href = url;
+}
 </script>
 </head>
 <body>
-	<div class="jol1">
-	<form name="rtcForm">
+	<div class="faq">
+	<form name="faql">
 </form>
 <div class="container"> 
 		<h2><i class="glyphicon glyphicon-list-alt"></i>자주하는 질문들</h2>
@@ -74,40 +64,35 @@ margin:auto;
 			
 			<tbody>
 			<tr>
-				<td rowspan="2">2</td>
-				<td rowspan="2">기간</td>
-				<td><a href="#"><i class="glyphicon glyphicon-question-sign"></i>총 예상 기간이 얼마나 걸리나요?</a></td>
-				<td rowspan="2">lkkaburil</td>
-				<td rowspan="2">
-				<script language="JavaScript"> 
-var today = new Date( ) 
-document.write(today.getFullYear( ) , "년 ", 
-               today.getMonth( )+1 , "월 " , today.getDate( ) , "일") 
-</script>	
-				</td></tr>
+				<td rowspan="2">${dto.faq_num}</td>
+				<td rowspan="2">${dto.faq_category}</td>
+				<td><a href="javascript:read('${dto.faq_num}')"><i class="glyphicon glyphicon-question-sign"></i>${dto.faq_title}</a></td>
+				<td rowspan="2">${dto.a_id}</td>
+				<td rowspan="2">${dto.faq_wdate}</td>
+				</tr>
+				
 				<tr>
 				<td><i class="glyphicon glyphicon-question-sign"></i>
-				lkkaburil 고객님 안녕하세요.<br>
-				개인의 의뢰 및 요청에 따라서 다양한 시간이 소요 됩니다.<br>
-				하지만 평균적인 시간은 3시간 정도입니다.<br>
-				저희 gobook에서는 언제나 고객님을 위해 항시 대기중입니다.<br>
-				더욱 더 궁금한 점은 1:1문의를 요청해주십시오.
+				${dto.faq_content}
 				</td>
 				</tr>
 			
 			<tr>
-			<td>1</td>
-			<td>비용</td>
-			<td><a href="#">대략적인 비용이 궁금합니다.</a></td>
-			<td>thomas1496</td>
-				<td>
-				<script language="JavaScript"> 
-var today = new Date( ) 
-document.write(today.getFullYear( ) , "년 ", 
-               today.getMonth( )+1 , "월 " , today.getDate( ) , "일") 
-</script>	
-				</td>
+			<td>${dto.faq_num}</td>
+			<td>${dto.faq_category}</td>
+			<td><a href="#">${dto.faq_title}</a></td>
+			<td>${dto.a_id}</td>
+				<td>${dto.faq_wdate}</td>
 				</tr>
+				
+				<tr>
+			<td>${dto.faq_num}</td>
+			<td>${dto.faq_category}</td>
+			<td><a href="javascript:read2('${dto.faq_num}')">${dto.faq_title}</a></td>
+			<td>${dto.a_id}</td>
+				<td>${dto.faq_wdate}</td>
+				</tr>
+				
 				</tbody>
 		</table>
 		</div>
@@ -117,8 +102,11 @@ document.write(today.getFullYear( ) , "년 ",
 	</div>
 	<br><br>
 	<div style="text-align: center;">
-	<button class="btn btn-Default btn-md" type="button" name="">메인으로</button>
-	<button class="btn btn-Default btn-md" type="button" name="">뒤로가기</button>
+	<button class="btn btn-Default btn-md" type="button" name="" onclick="main()">메인으로</button>
+	<button class="btn btn-Default btn-md" type="button" name="" onclick="history.back()">뒤로가기</button>
+	
+	<button class="btn btn-Default btn-md" type="button" name="" onclick="fupdate('${dto.faq_num}')">수정</button>
+	<button class="btn btn-Default btn-md" type="button" name="" onclick="fdelete('${dto.faq_num}')">삭제</button>
 	</div>
 </body>
 </html>

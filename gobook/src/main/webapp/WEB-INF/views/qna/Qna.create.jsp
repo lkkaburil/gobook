@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <%  request.setCharacterEncoding("utf-8");%>
-<c:set var="root" value="${pageContext.request.contextPath }"/>      
+<c:set var="root" value="${pageContext.request.contextPath }"/>     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,23 +12,18 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-function flist(faq_num){
-	var url = "${root}/faq/list";
-	url += "?faq_num="+faq_num;
-	url += "&col=${col}";
-	url += "&word=${word}";
-	url += "&nowPage=${nowPage}";	
-
-	location.href = url;	
+function qlist(){
+	var url = "${root}/qna/list";
+	location.href = url;
 }
 
 </script>
-<title>faq</title>
+<title>qna</title>
 
 </head>	
 <body>
 <div class="container">
-<h2><i class="glyphicon glyphicon-list-alt"></i>자주하는 질문들</h2>
+<h2><i class="glyphicon glyphicon-th-list"></i>질문과 답변</h2>
 <br><br>
 <table class="table table-bordered">
 	<tr>
@@ -43,7 +38,7 @@ function flist(faq_num){
 </div>
 <br><br>
 <div style="text-align: center;">
-<button class="btn btn-Default btn-md" type="button" name="" onclick="flist('${dto.faq_num}')">등록</button>
+<button class="btn btn-Default btn-md" type="button" name="" onclick="qlist()">등록</button>
 <button class="btn btn-Default btn-md" type="button" name="" onclick="history.back()">취소</button>
 </div>
 </body>

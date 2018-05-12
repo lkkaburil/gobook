@@ -27,10 +27,20 @@
     <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
   </bean>
 	
-  <bean id="mdao" 
+  <bean id="ndao" 
   	class="spring.model.notice.NoticeDAO"
   	p:mybatis-ref="sqlSession"
   />
 
+  <bean id="fdao" 
+  	class="spring.model.faq.FaqDAO"
+  	p:mybatis-ref="sqlSession"
+  />	
+  
+  <bean id="qdao" 
+  	class="spring.model.faq.FaqDAO"
+  	p:mybatis-ref="sqlSession"
+  />	
+  
 	
 </beans>

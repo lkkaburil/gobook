@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<%  request.setCharacterEncoding("utf-8");%>
+<c:set var="root" value="${pageContext.request.contextPath }"/>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -8,7 +12,7 @@
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>공지사항</title>
+<title>notice</title>
 <style type="text/css">
  a{
  	color: black;
@@ -23,34 +27,22 @@ margin:auto;
 
 </style>
 <script type="text/javascript">
-	function realtimeClock() {
-		document.rtcForm.rtcInput.value = getTimeStamp();
-		setTimeout("realtimeClock()", 1000);
+	function read(n_num){
+		var url = "${root}/notice/read";
+		url += "?n_num="+n_num;
+		url += "&col=${col}";
+		url += "&word=${word}";
+		url += "&nowPage=${nowPage}";		
+		location.href = url;
 	}
-
-	function getTimeStamp() { // 24시간제
-		var d = new Date();
-
-		var s = leadingZeros(d.getFullYear(), 4) + '-'
-				+ leadingZeros(d.getMonth() + 1, 2) + '-'
-				+ leadingZeros(d.getDate(), 2) + ' ' +
-
-				leadingZeros(d.getHours(), 2) + ':'
-				+ leadingZeros(d.getMinutes(), 2) + ':'
-				+ leadingZeros(d.getSeconds(), 2);
-
-		return s;
-	}
-
-	function leadingZeros(n, digits) {
-		var zero = '';
-		n = n.toString();
-
-		if (n.length < digits) {
-			for (i = 0; i < digits - n.length; i++)
-				zero += '0';
-		}
-		return zero + n;
+	
+	function ncreate(n_num){
+		var url = "${root}/notice/create";
+		url += "?n_num="+n_num;
+		url += "&col=${col}";
+		url += "&word=${word}";
+		url += "&nowPage=${nowPage}";		
+		location.href = url;	
 	}
 </script>
 </head>
@@ -72,41 +64,50 @@ margin:auto;
 			
 			
 			<tbody>
-			<tr>
-				<td>2</td>
-				<td><a href="#">4월 27(금)업데이트 점검 일정 연기</a></td>
-				<td>관리자</td>
-				<td>
-				<script language="JavaScript"> 
-var today = new Date( ) 
-document.write(today.getFullYear( ) , "년 ", 
-               today.getMonth( )+1 , "월 " , today.getDate( ) , "일") 
-</script>	
-				</td>
-			</tr>
-			<tr>
-			<td>1</td>
-			<td><a href="#">일부 펄 상품 판매 종료 사전 안내</a></td>
-			<td>운영자</td>
-				<td>
-				<script language="JavaScript"> 
-var today = new Date( ) 
-document.write(today.getFullYear( ) , "년 ", 
-               today.getMonth( )+1 , "월 " , today.getDate( ) , "일") 
-</script>	
+			<c:choose>
+				<c:when test="${empty list}">
+				<tbody>
+				<tr>
+				<td colspan="5">
+				등록된 글이 없습니다.
 				</td>
 				</tr>
 				</tbody>
+				</c:when>
+				<c:otherwise>
+					<c:forEach var="dto" items="${list}">
+				<tbody>
+			<tr>
+				<td>${dto.n_num}</td>
+				<td><a href="javascript:read('${dto.n_num}')">${dto.n_title}</a></td>
+				<td>${dto.a_id}</td>
+				<td>${dto.n_wdate}</td>
+			</tr>
+				</tbody>
+					</c:forEach>
+				</c:otherwise>
+				</c:choose>
 		</table>
 		</div>
 		<div style="text-align: center;">
-	페이징1 2
+	${paging}
 	</div>
 	</div>
 	<br><br>
 	<div style="text-align: center;">
-	<button class="btn btn-Default btn-md" type="button" name="">메인으로</button>
-	<button class="btn btn-Default btn-md" type="button" name="">뒤로가기</button>
+	<button class="btn btn-Default btn-md" type="button" name="" onclick="main">메인으로</button>
+	<button class="btn btn-Default btn-md" type="button" name="" onclick="history.back()">뒤로가기</button>
+	
+	<button class="btn btn-Default btn=md" type="button" name="" onclick="ncreate('${dto.n_num}')">글 작성</button> 
+	
+	<input type="hidden" name="n_num" value="${param.n_num}">
+	<input type="hidden" name="n_title" value="${param.n_title}">
+	<input type="hidden" name="n_content" value="${param.n_content}">
+	<input type="hidden" name="n_wdate" value="${param.n_wdate}">
+	<input type="hidden" name="a_id" value="${param.a_id}">
+	<input type="hidden" name="col" value="${param.col}">
+	<input type="hidden" name="word" value="${param.word}">
+	<input type="hidden" name="nowPage" value="${param.nowPage}">
 	</div>
 </body>
 </html>

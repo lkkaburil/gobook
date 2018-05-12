@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<%  request.setCharacterEncoding("utf-8");%>
+<c:set var="root" value="${pageContext.request.contextPath }"/>      
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -10,52 +13,102 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>faq</title>
 <style type="text/css">
-
+ a{
+ 	color: black;
+ }
+ a:hover {
+	text-decoration: none;
+}
 container{
 text-align:center;
 margin:auto;
 }
 
 </style>
+<script type="text/javascript">
+	function fupdate(faq_num){
+		var url = "${root}/faq/update";
+		url += "?faq_num="+faq_num;
+		url += "&col=${col}";
+		url += "&word=${word}";
+		url += "&nowPage=${nowPage}";	
+		location.href = url;
+	}
+	
+	function fdelete(faq_num){
+		var url = "${root}/faq/delete";
+		url += "?faq_num="+faq_num;
+		url += "&col=${col}";
+		url += "&word=${word}";
+		url += "&nowPage=${nowPage}";
+		location.href = url;
+}
+</script>
 </head>
 <body>
-<div class="container">
-<h2><i class="glyphicon glyphicon-list-alt"></i>자주하는 질문들</h2>
-<br><br>
-<h3>분류 : 소요 시간</h3>
-<table class="table table-bordered" style="text-align:center;">
-	
-	<tr>
-		<th class="active" style="text-align:center;">번호</th>
-		<td width="100">2</td>
-		<th class="active" style="text-align:center;">제목</th>
-		<td>총 예상 기간이 얼마나 걸리나요 ?</td>
-	</tr>
+	<div class="faq">
+	<form name="faql">
+</form>
+<div class="container"> 
+		<h2><i class="glyphicon glyphicon-list-alt"></i>자주하는 질문들</h2>
+		<br><br>
+		 <table class="table table-hover table-bordered" style="text-align:center;">
 		
-	<tr>
-		<th class="active" style="text-align:center;">내용</th>
-		<td colspan="3" width="50" style="text-align:left;">
-		반갑습니다 ㅇㅇㅇ고객님<br>
-		저희 사이트에서는 고객님을 최우선 하기 때문에 직원들이 항시 24시간 대기하고 있습니다.
-		<br>입금을 하시면 5분내로 확인 후 바로 작업이 들어가게 됩니다. 그러면 평균 소요시간은 3~5시간 정도입니다.
-		<br>그러나 고객님의 요청사항과 개개인에 취향에 따라서는 어느정도 시간이 늘어날 수도 있습니다.
-		</td>	
-    </tr>
-    
-    <tr>
-		<th class="active" style="text-align:center;">작성자</th>
-		<td width="70">관리자</td>
-		<th class="active" style="text-align:center;">작성일</th>
-		<td>2018년 5월 4일</td>
-	</tr>
+			<tr>
+				<th class="active" style="text-align:center;"><STRONG><BIG>번호</BIG></STRONG>
+				<th class="active" style="text-align:center;"><STRONG><BIG>분류</BIG></STRONG></th>
+				<th class="active" style="text-align:center;"><STRONG><BIG>제목</BIG></STRONG></th>
+				<th class="active" style="text-align:center;"><STRONG><BIG>작성자</BIG></STRONG></th>
+				<th class="active" style="text-align:center;"><STRONG><BIG>작성일</BIG></STRONG></th>
+			</tr>
+			
+			
+			<tbody>
+			<tr>
+				<td>${dto.faq_num}</td>
+				<td>${dto.faq_category}</td>
+				<td>${dto.faq_title}</td>
+				<td>${dto.a_id}</td>
+				<td>${dto.faq_wdate}</td>
+				</tr>
+			
+			
+			<tr>
+			<td rowspan="2">${dto.faq_num}</td>
+			<td rowspan="2">${dto.faq_category}</td>
+			<td><a href="#"><i class="glyphicon glyphicon-question-sign">${dto.faq_title}</a></td>
+			<td rowspan="2">${dto.a_id}</td>
+			<td rowspan="2">${dto.faq_wdate}</td>
+				</tr>
+				
+				<tr>
+				<td><i class="glyphicon glyphicon-question-sign"></i>
+				${dto.faq_content}
+				</td>
+				</tr>
+			
+				<tr>
+			<td>${dto.faq_num}</td>
+			<td>${dto.faq_category}</td>
+			<td><a href="javascript:read2('${dto.faq_num}')">${dto.faq_title}</a></td>
+			<td>${dto.a_id}</td>
+				<td>${dto.faq_wdate}</td>
+				</tr>
+			
+				</tbody>
+		</table>
+		</div>
+		<div style="text-align: center;">
+	페이징1 2
+	</div>
+	</div>
+	<br><br>
+	<div style="text-align: center;">
+	<button class="btn btn-Default btn-md" type="button" name="" onclick="main()">메인으로</button>
+	<button class="btn btn-Default btn-md" type="button" name="" onclick="history.back()">뒤로가기</button>
 	
-
-</table>
-<br><br>
-<div style="text-align: center;">
-	<button class="btn btn-Default btn-md" type="button" name="">뒤로가기</button>
-	<button class="btn btn-Default btn-md" type="button" name="">메인으로</button>
-</div>
-</div>
+	<button class="btn btn-Default btn-md" type="button" name="" onclick="fupdate('${dto.faq_num}')">수정</button>
+	<button class="btn btn-Default btn-md" type="button" name="" onclick="fdelete('${dto.faq_num}')">삭제</button>
+	</div>
 </body>
 </html>

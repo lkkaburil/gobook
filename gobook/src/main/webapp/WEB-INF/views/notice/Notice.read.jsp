@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<%  request.setCharacterEncoding("utf-8");%>
+<c:set var="root" value="${pageContext.request.contextPath }"/>  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -8,7 +11,35 @@
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>0 ji 4 hang</title>
+<script type="text/javascript">
+function nupdate(n_num){
+	var url = "${root}/notice/update";
+	url += "?n_num=";
+	url += "&col=${param.col}";
+	url += "&word=${param.word}";
+	url += "&nowPage=${param.nowPage}"
+	location.href = url;
+}
+function ndelete(n_num){
+	var url = "${root}/notice/delete";
+	url += "?n_num=";
+	url += "&col=${param.col}";
+	url += "&word=${param.word}";
+	url += "&nowPage=${param.nowPage}"
+	location.href = url;
+}
+function ncreate(n_num){
+	var url = "${root}/notice/create";
+	url += "?n_num=";
+	url += "&col=${param.col}";
+	url += "&word=${param.word}";
+	url += "&nowPage=${param.nowPage}"
+	location.href = url;
+}
+
+
+</script>
+<title>notice</title>
 <style type="text/css">
 
 container{
@@ -26,35 +57,32 @@ margin:auto;
 	
 	<tr>
 		<th class="active" style="text-align:center;">번호</th>
-		<td width="100">2</td>
+		<td width="100">${dto.n_num}</td>
 		<th class="active" style="text-align:center;">제목</th>
-		<td>4월 27(금)업데이트 점검 일정 연기</td>
+		<td>${dto.n_title}</td>
 	</tr>
 		
 	<tr>
 		<th class="active" style="text-align:center;">내용</th>
-		<td colspan="3" width="50" style="text-align:left;">반갑습니다. 고객님들에게 죄송하지만 시스템 전산상의 이유로 인해서 부득이하게
-			시스템 점검 일정을 연기하게 되었습니다. 시스템 점검은 금일 저녁 10시로 변경 될 예정이며,
-			유저분들은 특별한 보상을 순차적으로 지급받게 됩니다. 시스템 관리에 소홀한 점 양해해 주시기 바라며,
-			앞으로도 더욱 더 나은 시스템을 만들기 위해 노력하겠습니다.
-			금일 업데이트는 신규 캐릭터 추가 및, 크론성 지역 확장과 새로운 퀘스트, 친구를 소개시켜줘라 등
-			다양한 업데이트가 예정되 있으며, 시스템 점검은 약 2시간 정도로 진행될 예정입니다.
-			다시한번 고객분들에게 죄송하다는 말씀 드리면서 앞으로 더욱 더 노력하는 MAIN이 되겠습니다.</td>	
+		<td colspan="3" width="50" style="text-align:left;">${dto.n_content}</td>	
     </tr>
     
     <tr>
 		<th class="active" style="text-align:center;">작성자</th>
-		<td width="70">관리자</td>
+		<td width="70">${dto.a_id}</td>
 		<th class="active" style="text-align:center;">작성일</th>
-		<td>2018년 5월 4일</td>
+		<td>${dto.n_wdate}</td>
 	</tr>
 	
 
 </table>
 <br><br>
 <div style="text-align: center;">
-	<button class="btn btn-Default btn-md" type="button" name="">뒤로가기</button>
-	<button class="btn btn-Default btn-md" type="button" name="">메인으로</button>
+	<button class="btn btn-Default btn-md" type="button" name="" onclick="history.back()">뒤로가기</button>
+	<button class="btn btn-Default btn-md" type="button" name="" onclick="main">메인으로</button>
+	<button class="btn btn-Default btn-md" type="button" name="" onclick="ncreate('${dto.n_num}')">글 작성</button>
+	<button class="btn btn-Default btn-md" type="button" name="" onclick="nupdate('${dto.n_num}')">수정</button>
+	<button class="btn btn-Default btn-md" type="button" name="" onclick="ndelete('${dto.n_num}')">삭제</button>
 </div>
 </div>
 </body>
