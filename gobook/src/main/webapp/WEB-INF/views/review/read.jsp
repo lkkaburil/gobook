@@ -9,16 +9,16 @@
 <meta charset="UTF-8">
 <title></title>
 <script type="text/javascript">
-function fileDown(filename) {
+function fileDown(re_filename) {
 	var url ="${root}/download";
-	url += "?filename="+filename;
+	url += "?re_filename="+re_filename;
 	url += "&dir=/storage_b";
 	location.href = url;
 }
 function mupdate(re_num){
 	var url ="./update";
 	url +=  "?re_num="+re_num;
-	url += "&oldfile=${dto.filename}"; 
+	url += "&oldfile=${dto.re_filename}"; 
 	url += "&col=${param.col}";
 	url += "&word=${param.word}";
 	url += "&nowPage=${param.nowPage}";
@@ -28,7 +28,7 @@ function mupdate(re_num){
 	function mdel(re_num){
 	var url ="./delete";
 	url += "?re_num="+re_num;
-	url += "&oldfile=${dto.filename}";
+	url += "&oldfile=${dto.re_filename}";
 	url += "&col=${param.col}";
 	url += "&word=${param.word}";
 	url += "&nowPage=${param.nowPage}";
@@ -44,10 +44,20 @@ function mupdate(re_num){
 		
 		location.href=url;
 	}
-	</script> 
+	function uplike(re_num) {
+		$.post("./re_like", {
+			num: re_num
+		}, function(data, textSt){
+			var like = document.getElmentById("like").firstChild.nodeValue;
+			alert(like);
+			like++;
+			alert(like);
+			$("#like").empty();
+			$("#like").append(like);
+		});
+	}
 
 </script>
-<link href="../css/style.css" rel="Stylesheet" type="text/css" />
 
 <style type="text/css">
 * {
@@ -60,6 +70,15 @@ hr {
 	border: 1px solid #AAAAAA;
 	width: 50%;
 }
+  #table1, th, td {
+    border: 1px solid #bcbcbc;
+  }
+  #table1 {
+    width: 400px;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
 </style>
 </head>
@@ -67,8 +86,7 @@ hr {
  
 	<DIV class="title">조회</DIV>
 
-
-	<TABLE>
+	<TABLE id="table1">
 		<TR>
 			<TH>제목</TH>
 			<TD>${dto.re_title}</TD>
@@ -79,11 +97,15 @@ hr {
 		</TR>
 		<TR>
 			<TH>조회수</TH>
-			<TD>${dto.re_count }</TD>
+			<TD>${dto.re_count }</TD>		
+		</TR>
+		<TR>
+			<TH>평점</TH>
+			<TD>${dto.re_rating }</TD>
 		</TR>
 		<TR>
 			<TH>좋아요</TH>
-			<TD>${dto.re_like }</TD>
+			<TD><span id="like">${dto.re_like }</span></TD>
 		</TR>
 		<TR>
 			<TH>등록날짜</TH>
@@ -92,11 +114,11 @@ hr {
 		<TR>
 			<TH>파일명</TH>
 			<TD><c:choose>
-					<c:when test="${empty dto.filename}">
+					<c:when test="${empty dto.re_filename}">
       		파일없음
       	</c:when>
 					<c:otherwise>
-						<a href="javascript:fileDown('${dto.filename }')">${dto.filename }(${dto.filesize })</a>
+						<a href="javascript:fileDown('${dto.re_filename }')">${dto.re_filename }(${dto.re_filesize })</a>
 					</c:otherwise>
 				</c:choose></TD>
 		</TR>
@@ -104,7 +126,7 @@ hr {
 <center>
 						<DIV class='bottom'>
 
-							<input type='button' value='추천' onclick="">
+							<input type='button' value='좋아요' onclick="uplike(${dto.re_num})">
 							<input type='button' value='LIST' onclick="mlist(${dto.re_num})">
 							<input type='button' value='UPDATE'onclick="mupdate(${dto.re_num})"> 
 							<input type='button'value='DELETE' onclick="mdel(${dto.re_num})">

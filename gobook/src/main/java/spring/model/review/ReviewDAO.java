@@ -23,7 +23,7 @@ public class ReviewDAO implements IReviewDAO {
 	@Override
 	public Object read(Object pk) throws Exception {
 		System.out.println(pk);
-		return mybatis.selectOne("review.read", pk);
+		return mybatis.selectOne("review.read", pk);	
 	}
    @Override
    public boolean create(Object dto)throws Exception{
@@ -41,7 +41,7 @@ public class ReviewDAO implements IReviewDAO {
 	
 	@Override
 	public List list(Map map) throws Exception {
-		
+
 		return mybatis.selectList("review.list",map);
 	}
 	 
@@ -80,6 +80,10 @@ public class ReviewDAO implements IReviewDAO {
 		
 		mybatis.update("review.upRe_count", re_num);
 	
+	}
+	public void re_like(int re_num)throws Exception{
+		
+		mybatis.update("review.upRe_like", re_num);
 	}
 
 		

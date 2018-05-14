@@ -33,26 +33,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="create" parameterType="reviewDTO">
     	insert into review(re_num, re_title,re_content
     	,re_filename,re_filesize,re_rating,c_id, s_id,re_wdate)
-    	values((select nvl(max(re_num),0)+1 from review), #{re_title}, #{re_content},#{re_filename, jdbcType=VARCHAR},
-    	#{re_filesize, jdbcType=VARCHAR},#{re_rating, jdbcType=VARCHAR},#{c_id, jdbcType=VARCHAR},#{s_id, jdbcType=VARCHAR},sysdate)
+    	values((select nvl(max(re_num),0)+1 from review), #{re_title, jdbcType=VARCHAR}, #{re_content, jdbcType=VARCHAR},#{re_filename, jdbcType=VARCHAR},
+    	#{re_filesize},#{re_rating,jdbcType=DOUBLE},#{c_id},#{s_id},sysdate)
 
     </select>
     
    <update id="update" parameterType="reviewDTO">
 	update review 
 	set re_title = #{re_title},
-	re_content = #{re_content}, 
+	re_content = #{re_content}
      <if test="re_filesize > 0">
 			re_filename = #{re_filename},
-			re_filesize = #{re_filesize},
+			re_filesize = #{re_filesize}
 		</if>
-	re_rating = #{re_rating}
 	where re_num = #{re_num}
 	</update>
 	
 	<update id="upRe_count" parameterType="int">
 		update review
 		set re_count = re_count +1
+		where re_num = #{re_num}
+	</update>
+	
+	<update id="upRe_like" parameterType="int">
+		update review
+		set re_like = re_like +1
 		where re_num = #{re_num}
 	</update>
 	
@@ -63,7 +68,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <select id="read" resultType="reviewDTO" parameterType="int">
      select
-		re_num, re_count, re_title, re_content, re_wdate, re_like, re_filename, re_filesize
+		re_num, re_count, re_title, re_content, re_wdate, re_like,re_rating, re_filename, re_filesize
 		from
 		Review
 		where re_num = #{re_num}

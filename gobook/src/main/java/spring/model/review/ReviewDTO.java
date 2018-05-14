@@ -9,7 +9,7 @@ public class ReviewDTO {
 	private String re_filename;
 	private int re_filesize;
 	private int re_count;
-	private int re_rating;
+	private double re_rating;
 	private int re_like;	
 	private String s_id;
 	private String c_id;
@@ -44,7 +44,7 @@ public class ReviewDTO {
 	public int getRe_count() {
 		return re_count;
 	}
-	public int getRe_rating() {
+	public double getRe_rating() {
 		return re_rating;
 	}
 	public int getRe_like() {
@@ -77,7 +77,7 @@ public class ReviewDTO {
 	public void setRe_count(int re_count) {
 		this.re_count = re_count;
 	}
-	public void setRe_rating(int re_rating) {
+	public void setRe_rating(double re_rating) {
 		this.re_rating = re_rating;
 	}
 	public void setRe_like(int re_like) {

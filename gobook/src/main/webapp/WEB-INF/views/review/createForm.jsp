@@ -1,6 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ include file="/ssi/ssi.jsp" %>
-<%String root=request.getContextPath(); %>
 
 <!DOCTYPE html> 
 <html> 
@@ -13,6 +12,28 @@
   font-size: 20px; 
 } 
 </style> 
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+<script type="text/javascript">
+var $jjj2=jQuery.noConflict(); 
+$jjj2(document).ready(function ($) {
+	 
+	  $("#rateYo").rateYo({
+	 	
+	    onSet: function (rating, rateYoInstance) {
+	 	if(rating<0.5){
+	 		alert('최소 평점은 0.5 이상 입력해야 합니다.');
+	 		$("#rateYo").rateYo().rateYo("rating",0.5);
+	 		$("#rrr").text('('+0.5+')');
+	 	}else{
+	    	$("#rrr").text('('+rating+')');
+	      document.getElementById('rating').value=eval(rating);
+	    }}
+	  });
+	});
+  </script>
 <script type="text/javascript">
 function incheck(f){
 	if(f.title.value==""){
@@ -27,21 +48,20 @@ function incheck(f){
 		
 		return false;
 	} */
-	if (CKEDITOR.instances['content'].getData() == '') {
+	if (CKEDITOR.instances['re_content'].getData() == '') {
 	      window.alert('내용을 입력해 주세요.');
-	      CKEDITOR.instances['content'].focus();
+	      CKEDITOR.instances['re_content'].focus();
 	      return false;
 	
 	}
-	
-	
 }
 </script>
  <script type="text/javascript" src="${pageContext.request.contextPath}/ckeditor/ckeditor.js"></script>
  <script type="text/JavaScript">
-   window.onload=function(){
-     CKEDITOR.replace('content');  // <TEXTAREA>태그 id 값
-  };
+ var $jjj=jQuery.noConflict(); 
+ $jjj(document).ready(function($){
+     CKEDITOR.replace('re_content');  // <TEXTAREA>태그 id 값
+  });
  </script>
 
 </head> 
@@ -55,6 +75,8 @@ function incheck(f){
 	action='./create'
 	onsubmit="return incheck(this)"
 	enctype="multipart/form-data"> 
+	<input type="hidden" name="c_id" value="ctest">
+	<input type="hidden" name="s_id" value="stest">
   <TABLE class="table table-bordered">
   <tr>
       <TH>제목</TH>
@@ -62,12 +84,24 @@ function incheck(f){
     </TR>
     <TR>
       <TH>내용</TH>
-      <TD><textarea rows="10" cols="45" name="re_content"></textarea></TD>
+      <TD ><textarea rows="10" cols="45" name="re_content"></textarea></TD>
     </TR>
+    <tr>
+    <th>평점</th>
+    <td>
+ <div id="rateYo" ></div>
+
+ <div id="rrr" style="margin-left:7%;"></div>
+ <input type="hidden" name="re_rating" id="rating">
+</td>
+    </tr>
+    
+    
     <TR>
       <TH>파일</TH>
-      <TD><input type="file" name="filenameMF" ></TD>
+      <TD ><input type="file" name="filenameMF" ></TD>
     </TR>
+    
   </TABLE>
   
   <DIV style="text-align: center;">

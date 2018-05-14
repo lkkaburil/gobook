@@ -49,23 +49,22 @@ public class ReviewController {
 		
 		String basePath = request.getRealPath("/storage_b");
 		int re_num = Integer.parseInt(request.getParameter("re_num"));
-		String passwd = request.getParameter("passwd");
 		String oldfile = request.getParameter("oldfile");
 		
 		
 		boolean flag = false;
+		flag=dao.delete(re_num);
 		if(flag){
 			
 			model.addAttribute("col", request.getParameter("col"));
 			model.addAttribute("word", request.getParameter("word"));
 			model.addAttribute("nowPage", request.getParameter("nowPage"));
 			
-			flag=dao.delete(re_num);
 			Utility.deleteFile(basePath, oldfile);
 			
 			return "redirect:/review/list";
 		}else {
-			return "/image/passwdError";
+			return "/error/error";
 		}
 		
 	}
@@ -79,22 +78,22 @@ public class ReviewController {
 	@RequestMapping(value="/review/update", method = RequestMethod.POST)
 	public String update(ReviewDTO dto,Model model,HttpServletRequest request) throws Exception {
 		
-	/*	if(dao.update(dto)) {
+		if(dao.update(dto)) {
 			model.addAttribute("col",request.getParameter("col"));
 			model.addAttribute("word",request.getParameter("word"));
-			model.addAttribute("nowPage",request.getParameter("nowPage"));*/
+			model.addAttribute("nowPage",request.getParameter("nowPage"));
 			return "redirect:/review/list";
-/*		}else {
+		}else {
 			return "error";
-		}*/
+		}
 	}
 	
 	
 	@RequestMapping(value="/review/update",method=RequestMethod.GET)
-	public String update( Model model) throws  Exception{
+	public String update(int re_num, Model model) throws  Exception{
 		
-	/*	model.addAttribute("dto", dao.read(re_num));
-		*/
+	model.addAttribute("dto", dao.read(re_num));
+	
 		return "/review/update";
 		
 	}
@@ -131,7 +130,7 @@ public class ReviewController {
 		//전체 레코드 갯수 가져오기
 		int totalRecord = dao.total(map);
  
-		String paging = Utility.paging3(totalRecord, nowPage, recordPerPage, col, word);
+		String paging = Utility.paging(totalRecord, nowPage, recordPerPage, col, word);
 		
 		request.setAttribute("list", list);
 		request.setAttribute("paging", paging);
@@ -153,10 +152,8 @@ public class ReviewController {
 		String basePath = request.getRealPath("/storage_b");
 		String filename = Utility.saveFileSpring30(dto.getFilenameMF(), basePath);
 		int filesize = (int)dto.getFilenameMF().getSize();
-		
 		dto.setFilename(filename);
 		dto.setFilesize(filesize);
-		
 		if(dao.create(dto)) {
 			return "redirect:/review/list";
 		}else {
@@ -165,7 +162,10 @@ public class ReviewController {
  
 	}
 
-	
+	@RequestMapping(value="/review/re_like")
+	public void uplike(int num) throws Exception {
+		dao.re_like(num);
+	}
 	}
 	
 

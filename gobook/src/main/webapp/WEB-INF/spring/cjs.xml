@@ -28,7 +28,7 @@
     
     <definition name="/review/delete" extends="c_main"> 
         <put-attribute name="title" value="고북닷컴" ></put-attribute> 
-        <put-attribute name="body" value="/WEB-INF/views/review/deleteProc.jsp" /> 
+        <put-attribute name="body" value="/WEB-INF/views/review/deleteForm.jsp" /> 
     </definition>   
    
    
