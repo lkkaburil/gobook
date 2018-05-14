@@ -27,7 +27,7 @@
 							<ul style="margin-top:40px;">
 								<li><a href="#">Notice</a></li>
 								<li><a href="#">FreeBoard</a></li>
-								<li><a href="#">Customer Center</a></li>
+								<li><a href="#">Customer Centeraaa</a></li>
 							</ul>
 						</nav>
 						<nav class="main" >
@@ -37,6 +37,20 @@
 									<form style="margin-top:40px;"  id="search" method="get" action="#">
 										<input type="text" name="query" placeholder="Search" />
 									</form>
+								</li>
+								<li class="message">
+								<span id="span_count" style="z-index: 2;"></span>
+									<a style="margin-top:65px; z-index: 1;" class="fa fa-envelope-o" href="javascript:messageop()">Message</a>
+									<div id="message_div">
+										<div id="message_nav">
+											<div class="message_navbtn" id="listbtn" onclick="newmlist()">받은쪽지함</div>
+											<div class="message_navbtn" id="sendlistbtn" onclick="newmsendlist()">보낸쪽지함</div>
+											<div class="message_navbtn" id="createbtn" onclick="mcreateform()">쪽지보내기</div>
+										</div>
+										<table id="message_content"></table>
+										<div id="message_paging" style="text-align:center"></div>
+										<div id="message_etc"></div>
+									</div>
 								</li>
 								<li class="user">
 									<a style="margin-top:40px;" class="fa-user" href="#user">User</a>

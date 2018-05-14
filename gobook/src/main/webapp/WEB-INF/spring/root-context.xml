@@ -100,6 +100,8 @@
             <value>org.springframework.web.servlet.view.tiles2.TilesView</value> 
         </property> 
         <property name="order"><value>1</value></property>
-    </bean> 
+    </bean>
+    
+    <bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />
     	
 </beans>

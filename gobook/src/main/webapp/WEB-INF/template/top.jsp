@@ -11,6 +11,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="top/assets/css/main.css" />
+		<link rel="stylesheet" href="top/assets/css/message.css"/>
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
@@ -38,6 +39,22 @@
 										<input type="text" name="query" placeholder="Search" />
 									</form>
 								</li>
+<%-- 								<% if(session.getAttribute("id")!=null) { %> --%>
+								<li class="message">
+								<span id="span_count" style="z-index: 2;"></span>
+									<a style="margin-top:65px; z-index: 1;" class="fa fa-envelope-o" href="javascript:messageop()">Message</a>
+									<div id="message_div">
+										<div id="message_nav">
+											<div class="message_navbtn" id="listbtn" onclick="newmlist()">받은쪽지함</div>
+											<div class="message_navbtn" id="sendlistbtn" onclick="newmsendlist()">보낸쪽지함</div>
+											<div class="message_navbtn" id="createbtn" onclick="mcreateform()">쪽지보내기</div>
+										</div>
+										<table id="message_content"></table>
+										<div id="message_paging" style="text-align:center"></div>
+										<div id="message_etc"></div>
+									</div>
+								</li>
+<%-- 								<% } %> --%>
 								<li class="user">
 									<a style="margin-top:40px;" class="fa-user" href="#user">User</a>
 								</li>
@@ -110,6 +127,8 @@
 			<script src="top/assets/js/jquery.min.js"></script>
 			<script src="top/assets/js/skel.min.js"></script>
 			<script src="top/assets/js/util.js"></script>
+			<script src="top/assets/js/message.js"/></script>
+	
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="top/assets/js/main.js"></script>
 
