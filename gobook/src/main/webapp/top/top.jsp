@@ -65,7 +65,7 @@
 								<ul class="links">
 									<li>
 										<a href="#">
-											<h3>Lorem ipsum</h3>
+											<h3>Lorema ipsum</h3>
 											<p>Feugiat tempus veroeros dolor</p>
 										</a>
 									</li>
