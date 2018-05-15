@@ -162,7 +162,7 @@ function emailCheck(c_email){
 			</tr>
 			<TR>
 				<th class="th" scope="row"><img src="../images/star.png"/>생일</TH>
-				<TD><input type="date" name="c_birth" size="15" value="1999-01-01"></TD>
+				<TD><input type="date" name="c_birth" size="15" value=""></TD>
 			</TR>
 			<TR>
 				<th class="th" scope="row"><img src="../images/star.png"/>성별</TH>
@@ -199,7 +199,7 @@ function emailCheck(c_email){
 			<TR>
 				<TH class="th" scope="row"><img src="../images/star.png"/>주소</TH>
 				<TD>
-					<input type="text" name="c_address1" size="80" id="sample6_address" placeholder="주소" disabled> 
+					<input type="text" name="c_address1" size="80" id="sample6_address" placeholder="주소" readonly> 
 					<input type="text" name="c_address2" size="40" id="sample6_address2" placeholder="상세주소">
 				</TD>
 			</TR>
@@ -220,7 +220,7 @@ function emailCheck(c_email){
 		</table>
 
 		<DIV class="btn1">
-			<button type='submit' class="btn_submit">회원가입</button> 
+			<input type='submit' class="btn_submit" value='회원가입'>
 			<input type='reset' class="btn_reset" value='초기화'>
 		</DIV>
 	</div>

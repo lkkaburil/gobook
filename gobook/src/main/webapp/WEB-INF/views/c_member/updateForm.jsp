@@ -110,12 +110,12 @@ function emailCheck(c_email){
 			<tr>
 				<th class="th" scope="row"><img src="../images/star.png"/>ID</th>
 				<td>
-					<input type="text" name="c_id" title="ID는 수정할 수 없습니다" class="wid20" value="${dto.c_id}" disabled />
+					<input type="text" name="c_id" title="ID는 수정할 수 없습니다" class="wid20" value="${dto.c_id}" readonly />
 				</td>
 			</tr>
 			<tr>
 				<th class="th" scope="row"><img src="../images/star.png"/>성명</th>
-				<td><input type="text" name="c_name" size="25" value="${dto.c_name}" title="실명을 입력해 주세요" disabled></td>
+				<td><input type="text" name="c_name" size="25" value="${dto.c_name}" title="실명을 입력해 주세요" readonly></td>
 			</tr>
 			<tr>
 				<th class="th" scope="row">별명</th>
@@ -155,20 +155,20 @@ function emailCheck(c_email){
 			<TR>
 				<TD>
 					인증코드 &nbsp <input type="password" name="c_email_code" size="8">
-					<button type="button" class="button" onclick="emailNumCheck(document.frm.email_code.value)">확인</button>
+					<button type="button" class="button" onclick="emailNumCheck(document.frm.c_email_code.value)">확인</button>
 				</TD>
 			</TR>
 			<TR>
 				<TH class="th" scope="row"><img src="../images/star.png"/>우편번호</TH>
 				<TD>
-					<input type="text" name="c_zipcode" size="10" id="sample6_postcode" value="${dto.c_zipcode}" disabled>
+					<input type="text" name="c_zipcode" size="10" id="sample6_postcode" value="${dto.c_zipcode}" readonly>
 					<button type="button" class="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기">주소검색</button>
 				</TD>
 			</TR>
 			<TR>
 				<TH class="th" scope="row"><img src="../images/star.png"/>주소</TH>
 				<TD>
-					<input type="text" name="c_address1" size="80" id="sample6_address" value="${dto.c_address1}" disabled> 
+					<input type="text" name="c_address1" size="80" id="sample6_address" value="${dto.c_address1}" readonly> 
 					<input type="text" name="c_address2" size="40" id="sample6_address2" value="${dto.c_address2}">
 				</TD>
 			</TR>
@@ -178,42 +178,42 @@ function emailCheck(c_email){
 					<p>
 						<label> <input type="checkbox" name="c_interest" id="interest_0" value="I00"
 						<c:if test="${dto.c_interest == 'I00'}">
-							checked
+							checked="checked"
 						</c:if>
 						>육아</label> 
 						<label> <input type="checkbox" name="c_interest" id="interest_1" value="I01"
 						<c:if test="${dto.c_interest == 'I01'}">
-							checked
+							checked="checked"
 						</c:if>
 						>핸드메이드</label> 
 						<label> <input type="checkbox" name="c_interest" id="interest_2" value="I02"
 						<c:if test="${dto.c_interest == 'I02'}">
-							checked
+							checked="checked"
 						</c:if>
 						>뷰티</label> 
 						<label> <input type="checkbox" name="c_interest" id="interest_3" value="I03"
 						<c:if test="${dto.c_interest == 'I03'}">
-							checked
+							checked="checked"
 						</c:if>
 						>키덜트</label> 
 						<label> <input type="checkbox" name="c_interest" id="interest_4" value="I04"
 						<c:if test="${dto.c_interest == 'I04'}">
-							checked
+							checked="checked"
 						</c:if>
 						>헤어</label> 
 						<label> <input type="checkbox" name="c_interest" id="interest_5" value="I05"
 						<c:if test="${dto.c_interest == 'I05'}">
-							checked
+							checked="checked"
 						</c:if>
 						>숙박</label> 
 						<label> <input type="checkbox" name="c_interest" id="interest_6" value="I06"
 						<c:if test="${dto.c_interest == 'I06'}">
-							checked
+							checked="checked"
 						</c:if>
 						>건강</label> 
 						<label> <input type="checkbox" name="c_interest" id="interest_7" value="I07"
 						<c:if test="${dto.c_interest == 'I07'}">
-							checked
+							checked="checked"
 						</c:if>
 						>운동</label> 
 					</p>

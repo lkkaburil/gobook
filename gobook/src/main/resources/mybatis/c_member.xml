@@ -36,7 +36,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update c_member
 		set c_tel=#{c_tel}, c_email=#{c_email}, c_zipcode=#{c_zipcode}, 
 		c_address1=#{c_address1}, c_address2=#{c_address2}, c_interest=#{c_interest, jdbcType=VARCHAR}, c_nickname=#{c_nickname, jdbcType=VARCHAR}
-		WHERE c_id = #{id}
+		WHERE c_id = #{c_id}
 	</update>
 	
 	<update id="updatePasswd" parameterType="String">
