@@ -25,6 +25,7 @@
        <tx:attributes>
           <tx:method name="delete" rollback-for="Exception"/>
           <tx:method name="reply" rollback-for="Exception"/>
+          <tx:method name="create" rollback-for="Exception"/>
        </tx:attributes>
     </tx:advice>
  

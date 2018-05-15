@@ -17,6 +17,7 @@ public class C_MemberMgr{
 	private C_MemberDAO dao;
 	
 	public void create(C_MemberDTO dto) throws Exception{
+		/*root-context에 트랜잭션 설정해줌*/
 		System.out.println(dto.getC_id()+"$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 		
 		Map map = new HashMap();
