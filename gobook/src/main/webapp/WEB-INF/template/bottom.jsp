@@ -1,3 +1,6 @@
+<%@page contentType="text/html; charset=UTF-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="root" value="${pageContext.request.contextPath }"></c:set>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,11 +10,9 @@
 <meta name="author" content="Design Hooks" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1" />
-<link
-	href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:400,700"
-	rel="stylesheet" />
-<link href="bottom/img/gobook_icon.png" type="image/x-icon" rel="shortcut icon" />
-<link href="bottom/css/screen.css" rel="stylesheet" />
+
+<link href="${root }/bottom/img/gobook_icon.png" type="image/x-icon" rel="shortcut icon" />
+<link href="${root }/bottom/css/screen.css" rel="stylesheet" />
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"
 	integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 	crossorigin="anonymous"></script>
@@ -32,8 +33,8 @@
 							<ul>
 								<li><a href="#">공지사항</a></li>
 								<li><a href="#">자유게시판</a></li>
-								<li><a href="../team2/index.html">후기게시판</a></li>
-								<li><a href="#">질문게시판</a></li>
+								<li><a href="#">후기게시판</a></li>
+								<li><a href="#">질문게시판</a></li>
 								<li><a href="#">자주하는질문</a></li>
 							</ul>
 						</div>
@@ -75,7 +76,7 @@
 						<div class="widget widget_links">
 							<h5 class="widget-title">Contact us</h5>
 							<ul>
-								<li><a href="#">임시 테이블</a></li>
+								<li><a href="#">임시테이블</a></li>
 								<li><a href="#">1</a></li>
 								<li><a href="#">2</a></li>
 								<li><a href="#">3</a></li>
@@ -88,13 +89,13 @@
 		</footer>
 
 		<!-- Scripts -->
-		<script src="bottom/js/jquery.js"></script>
-		<script src="bottom/js/functions.js"></script>
+		<script src="${root }/bottom/js/jquery.js"></script>
+		<script src="${root }/bottom/js/functions.js"></script>
 		
-		<script src="bottom/js/jquery.min.js"></script>
-		<script src="bottom/js/skel.min.js"></script>
-		<script src="bottom/js/util.js"></script>
+		<script src="${root }/bottom/js/jquery.min.js"></script>
+		<script src="${root }/bottom/js/skel.min.js"></script>
+		<script src="${root }/bottom/js/util.js"></script>
 		<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-		<script src="bottom/js/main.js"></script>
+		<script src="${root }/bottom/js/main.js"></script>
 </body>
 </html>

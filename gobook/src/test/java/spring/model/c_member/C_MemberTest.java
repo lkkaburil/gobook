@@ -4,13 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import www.dao.BbsDTO;
-
 public class C_MemberTest {
 	
 	public static void main(String[] args) {
-		Admin_MemberDAO dao=new Admin_MemberDAO();
-		//create(dao);
+		C_MemberDAO dao=new C_MemberDAO();
+		System.out.println(dao);
+		create(dao);
 		//read(dao);
 		//update(dao);
 		//delete(dao);
@@ -21,7 +20,7 @@ public class C_MemberTest {
 		//idCheck(dao);
 	}
 
-	private static void idCheck(Admin_MemberDAO dao) {
+	private static void idCheck(C_MemberDAO dao) {
 		if(dao.idCheck("c_user9")) {
 			p("중복id임. 사용불가능");
 		}else {
@@ -30,7 +29,7 @@ public class C_MemberTest {
 		
 	}
 
-	private static void emailCheck(Admin_MemberDAO dao) {
+	private static void emailCheck(C_MemberDAO dao) {
 		if(dao.emailCheck("user1@gmail.com")) {
 			p("중복임. 사용불가능");
 		}else {
@@ -38,7 +37,7 @@ public class C_MemberTest {
 		}		
 	}
 
-	private static void updatePasswd(Admin_MemberDAO dao) {
+	private static void updatePasswd(C_MemberDAO dao) {
 		//맵에 아이디 비번 넣어서 업데이트
 		Map map = new HashMap();
 		map.put("c_id", "c_user1");
@@ -57,7 +56,7 @@ public class C_MemberTest {
 		}		
 	}
 	
-	private static void passwdCheck(Admin_MemberDAO dao) {
+	private static void passwdCheck(C_MemberDAO dao) {
 		Map map = new HashMap();
 		map.put("c_id", "c_user1");
 		map.put("c_passwd", "1234");
@@ -70,7 +69,7 @@ public class C_MemberTest {
 	}
 
 
-	private static void list(Admin_MemberDAO dao) {
+	private static void list(C_MemberDAO dao) {
 		Map map = new HashMap();
 		map.put("col", "c_name");
 		map.put("word", "몰랑");
@@ -92,7 +91,7 @@ public class C_MemberTest {
 		}			
 	}
 
-	private static void delete(Admin_MemberDAO dao) {
+	private static void delete(C_MemberDAO dao) {
 		String pk = "c_user1";
 		
 		try {
@@ -107,7 +106,7 @@ public class C_MemberTest {
 		}		
 	}
 
-	private static void update(Admin_MemberDAO dao) {
+	private static void update(C_MemberDAO dao) {
 		C_MemberDTO dto = new C_MemberDTO();
 		dto.setC_id("c_user1");
 		dto.setC_tel("010-9999-9999");
@@ -131,7 +130,7 @@ public class C_MemberTest {
 	}
 	
 
-	private static void read(Admin_MemberDAO dao) {
+	private static void read(C_MemberDAO dao) {
 		String pk = "c_user1";
 		C_MemberDTO dto = null;
 		try {
@@ -145,7 +144,7 @@ public class C_MemberTest {
 	}
 
 
-	private static void create(Admin_MemberDAO dao) {
+	private static void create(C_MemberDAO dao) {
 		C_MemberDTO dto=new C_MemberDTO();
 		dto.setC_id("c_user1");
 		dto.setC_passwd("1234");

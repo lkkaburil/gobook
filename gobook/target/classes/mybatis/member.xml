@@ -3,30 +3,23 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member">
-  
-    
-    <insert id="create" parameterType="memberDTO">
+     
+    <insert id="create" parameterType="map">
     	insert into member(id,grade)
     	values(#{id},#{grade})
     </insert>
-
-    <select id="read" resultType="memberDTO" parameterType="string">
-    	select * from member
-    	where id=#{id}
-    </select>
-     
     
-    <delete id="delete" parameterType="string">
+    <select id="getGrade" parameterType="String" resultType="String">
+		select grade
+		from member
+		where id = #{id}
+	</select>
+
+   <!--  <delete id="delete" parameterType="string">
    		delete from member
 		WHERE id=#{id}
-    </delete>
+    </delete> -->
     
-    <select id="list" resultType="memberDTO">
-    	select * from member
-    </select>
     
-    <select id="total" resultType="int">
-    	select count(*) from member
-    </select>
 </mapper>
 

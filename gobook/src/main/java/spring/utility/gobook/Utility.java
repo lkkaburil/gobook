@@ -98,6 +98,22 @@ public class Utility {
         return fileName; 
     } 
     
+    public static String getInterest_Value(String code) {
+		String value=null;
+		Map<String,String> codes = new HashMap<String,String>();
+		codes.put("I00", "육아");
+		codes.put("I01", "핸드메이드");
+		codes.put("I02", "뷰티");
+		codes.put("I03", "키덜트");
+		codes.put("I04", "헤어");
+		codes.put("I05", "숙박");
+		codes.put("I06", "건강");
+		codes.put("I07", "운동");
+		
+		value = codes.get(code);
+		
+		return value;
+	}
 	
 	public static String getCodeValue(String code) {
 		String value=null;

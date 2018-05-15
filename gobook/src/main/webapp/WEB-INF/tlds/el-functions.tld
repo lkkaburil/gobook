@@ -31,6 +31,7 @@
             java.lang.String getCodeValue( java.lang.String ) 
         </function-signature> 
     </function> 
+    
     <function> 
         <description>new이미지 생성</description> 
         <name>newimg</name>
@@ -39,6 +40,17 @@
         </function-class> 
         <function-signature> 
             boolean compareDay( java.lang.String ) 
+        </function-signature> 
+    </function> 
+    
+    <function> 
+        <description>관심사명 생성</description> 
+        <name>c_interestValue</name>
+        <function-class>                  
+            spring.utility.gobook.Utility
+        </function-class> 
+        <function-signature> 
+            java.lang.String getInterest_Value( java.lang.String ) 
         </function-signature> 
     </function> 
     
