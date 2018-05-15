@@ -123,7 +123,7 @@ function emailCheck(c_email){
 			</tr>
 			<TR>
 				<th class="th" scope="row"><img src="../images/star.png"/>생일</TH>
-				<TD><input type="date" name="c_birth" size="15" value="${dto.c_birth}"></TD>
+				<TD><input type="date" name="c_birth" size="15" value="${dto.c_birth}" readonly></TD>
 			</TR>
 			<TR>
 				<th class="th" scope="row"><img src="../images/star.png"/>성별</TH>
