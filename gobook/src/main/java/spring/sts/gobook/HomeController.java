@@ -35,5 +35,6 @@ public class HomeController {
 		
 		model.addAttribute("id", id);
 		return "/c_home";
+		
 	}
 }

@@ -13,12 +13,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             select re_num, re_title,re_content,re_filename,re_count,re_rating, re_like, to_char(re_wdate, 'yyyy-mm-dd') re_wdate
              from review
    <where>
+   		 s_id=#{id}
 		<choose>
-						<when test="col=='title'">
-						title like '%' || #{word} || '%'
+						<when test="col=='re_title'">
+						and re_title like '%'||#{word}||'%'
 						</when>
-						<when test="col=='content'">
-						content like '%' || #{word} || '%'
+						<when test="col=='re_content'">
+						and re_content like '%'||#{word}||'%'
 						</when>
 				</choose>
 	</where>   
@@ -78,11 +79,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from review
 		<where>
 			<choose>
-				<when test="col=='title'">
-					title like '%' || #{word}||'%'
+				<when test="col=='re_title'">
+					re_title like '%'||#{word}||'%'
 				</when>
-				<when test="col=='content'">
-					content like '%' || #{word}||'%'
+				<when test="col=='re_content'">
+					re_content like '%'||#{word}||'%'
 				</when>
 			</choose>
 		</where>

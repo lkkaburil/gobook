@@ -8,13 +8,8 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+<%-- <script type="text/javascript" src="<%=root%>/resources/js/jquery-3.2.1.min.js"></script> --%>
 <script type="text/javascript">
-function fileDown(re_filename) {
-	var url ="${root}/download";
-	url += "?re_filename="+re_filename;
-	url += "&dir=/storage_b";
-	location.href = url;
-}
 function mupdate(re_num){
 	var url ="./update";
 	url +=  "?re_num="+re_num;
@@ -37,8 +32,7 @@ function mupdate(re_num){
 	}
 	function mlist(re_num){
 		var url = "./list";
-		url += "?re_num="+re_num;
-		url += "&col=${param.col}";
+		url += "?col=${param.col}";
 		url += "&word=${param.word}";
 		url += "&nowPage=${param.nowPage}";
 		
@@ -49,9 +43,8 @@ function mupdate(re_num){
 			num: re_num
 		}, function(data, textSt){
 			var like = document.getElmentById("like").firstChild.nodeValue;
-			alert(like);
+			alert('좋아요 감사합니다.');
 			like++;
-			alert(like);
 			$("#like").empty();
 			$("#like").append(like);
 		});
@@ -112,13 +105,13 @@ hr {
 			<TD>${dto.re_wdate }</TD>
 		</TR>
 		<TR>
-			<TH>파일명</TH>
+			<TH></TH>
 			<TD><c:choose>
 					<c:when test="${empty dto.re_filename}">
       		파일없음
       	</c:when>
 					<c:otherwise>
-						<a href="javascript:fileDown('${dto.re_filename }')">${dto.re_filename }(${dto.re_filesize })</a>
+						<img src="${root }/storage/review/img/${dto.re_filename}" style="width:300px; height:200px; display:block;" class="w3-hover-opacity" align="middle">
 					</c:otherwise>
 				</c:choose></TD>
 		</TR>
@@ -133,20 +126,6 @@ hr {
 						</DIV>
 
 	<hr>
-<%-- 	<c:forEach var="rdto" items="${rlist}">
-		<div class="rlist">
-			${rdto.id}<br>
-			<p>${rdto.content }</p>
-			${rdto.regdate}
 
-			<c:if test="${sessionScope.id==rdto.id}">
-				<span style="float: right">
-				 <a	href="javascript:rupdate('${rdto.rnum }','${rdto.content }')">수정</a>
-					<a href="javascript:rdelete('${rdto.rnum}')">삭제</a>
-				</span>
-			</c:if>
-		</div>
-	</c:forEach>
- --%>
 </body>
 </html>

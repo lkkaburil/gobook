@@ -6,179 +6,161 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Gobook LIST</title>
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="format-detection" content="telephone=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<!-- Fonts-->
-<link rel="stylesheet" type="text/css"
-	href="../css/css_review/assets/fonts/fontawesome/font-awesome.min.css">
-<link rel="stylesheet" type="text/css"
-	href="../css/css_review/assets/fonts/pe-icon/pe-icon.css">
-<!-- Vendors-->
-<link rel="stylesheet" type="text/css"
-	href="../css/css_review/assets/vendors/bootstrap/grid.css">
-<link rel="stylesheet" type="text/css"
-	href="../css/css_review/assets/vendors/magnific-popup/magnific-popup.min.css">
-<link rel="stylesheet" type="text/css"
-	href="../css/css_review/assets/vendors/swiper/swiper.css">
-<!-- App & fonts-->
-<link rel="stylesheet" type="text/css" id="app-stylesheet"
-	href="../css/css_review/assets/css/main.css">
-<!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-		<![endif]-->
-<style type="text/css">
-.search1 {
-	border: 1px solid #bcbcbc;
-	border-radius: 0px;
-	width: 50%;
-	margin: 2px auto;
-	text-align: center;
-}
-</style>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+<title>Gobook Review</title>
 <script type="text/javascript">
 	function fileDown(re_filename) {
-		var url = "${root}/download";
-		url += "?re_filename=" + re_filename;
-		url += "&dir=/storage_b";
-		location.href = url;
-	}
-
+	var url = "{root}/download";
+	url += "?re_filename=" + re_filename;
+	url += "&dir=/storage/review/img";
+	location.href = url;
+}
 	function read(re_num) {
 		var url = "./read";
 		url += "?re_num=" + re_num; //자바스크립트변수는 + jsp변수는 식 안에
 		url += "&col=${col}";
 		url += "&word=${word}";
 		url += "&nowPage=${nowPage}";
-
 		location.href = url;
 	}
 </script>
+<style type="text/css">
 
+.search{
+width: 70%;
+margin : 10px auto;
+text-align: center;
+}
+</style>
 </head>
-
 <body>
 
-	<div class="page-wrap" style="margin-left: 300px;" id="root">
+<!-- 제목 -->
+<div class="col-sm-8 col-sm-offset-2 section-container-spacer ">
+        <div class="text-center">
+          <h1 class="h2">Review</h1>
+        </div>
+</div>
+<br>
+<br>
 
+<!-- 검색어 -->
 
-		<!-- Content-->
-		<div class="wil-content">
-
-
-
-
-			<!-- Section -->
-
-			<section class="awe-section bg-gray">
-				<div class="container">
-					<div class="grid-css grid-css--masonry" data-col-lg="3"
-						data-col-md="2" data-col-sm="2" data-col-xs="1" data-gap="30">
-						<div class="grid__inner">
-							<div class="grid-sizer"></div>
-							<div class="grid-item">
-								<div class="grid-item__inner">
-									<div class="grid-item__content-wrapper">
-
-										<!-- post -->
-									<c:choose>
-										<c:when test="${empty list }">
-											<tbody>
-												<tr>
-													<td colspan="6">등록된 글이 없습니다</td>
-												</tr>
-											</tbody>
-										</c:when>
-
-										<c:otherwise>
-											<c:forEach var="dto" items="${list}">
-												<div class="post">
-													<div class="post__media">
-														<a href="javascript:read('${dto.re_num}')"><img
-															src="${dto.re_filename }?w=1260&amp;h=750&amp;auto=compress&amp;cs=tinysrgb"
-															alt="" /></a>
-													</div>
-													<c:if test="${not empty dto.re_filename }">
-														<a href="javascript:fileDown('${dto.re_filename }')">${dto.re_filename }</a>
-													</c:if>
-													&nbsp;
-													<div class="post__body">
-														<div class="post__meta">
-															<span class="date">${dto.re_wdate }</span><span
-																class="author"><a
-																href="javascript:read('${dto.re_num}')" rel="">by
-																	${dto.s_id}${dto.c_id }님</a></span>
-														</div>
-														<h2 class="post__title">
-															<a href="javascript:read('${dto.re_num}')">${dto.re_title }</a>
-														</h2>
-														<p class="post__text">${dto.re_content }.</p><b>좋아요:${dto.re_like}</b>
-														<a class="md-btn md-btn--outline-primary"
-															href="javascript:read('${dto.re_num}')">read more </a>
-													</div>
-												</div>
-												<!-- End / post -->
-											</c:forEach>
-										</c:otherwise>
-									</c:choose>
-									</div>
-								</div>
-							</div>
-			</section>
-			<!-- End / Section -->
-
-			<div class="search">
-				<form action="review/list" method="post">
-					<select name="col">
-						<option value="title"
+<form action="./list" method="get">
+<center>
+					<select name="col" style="width: 10%; display: inline;">
+						<option value="re_title"
 							<c:if test="${col == 're_title' }">selected</c:if>>제목</option>
-						<option value="cn"
+						<option value="re_content"
 							<c:if test="${col == 're_content' }">selected</c:if>>내용</option>
 						<option value="total">전체출력</option>
-					</select> <input type="search" name="word" required="required"
-						value="${word}">
+					</select> <input type="search" name="word" value="${word}" >
 					<button>검색</button>
 					<button type="button" onclick="location.href='./create'">등록</button>
 				</form>
-			</div>
-
-		</div>
-		<!-- End / Content-->
+				</center>
 
 
-	</div>
-	<!-- Vendors-->
-	<script type="text/javascript"
-		src="../css/css_review/assets/vendors/jquery/jquery.min.js"></script>
-	<script type="text/javascript"
-		src="../css/css_review/assets/vendors/imagesloaded/imagesloaded.pkgd.js"></script>
-	<script type="text/javascript"
-		src="../css/css_review/assets/vendors/isotope-layout/isotope.pkgd.js"></script>
-	<script type="text/javascript"
-		src="../css/css_review/assets/vendors/jquery-one-page/jquery.nav.min.js"></script>
-	<script type="text/javascript"
-		src="../css/css_review/assets/vendors/jquery.easing/jquery.easing.min.js"></script>
-	<script type="text/javascript"
-		src="../css/css_review/assets/vendors/jquery.matchHeight/jquery.matchHeight.min.js"></script>
-	<script type="text/javascript"
-		src="../css/css_review/assets/vendors/magnific-popup/jquery.magnific-popup.min.js"></script>
-	<script type="text/javascript"
-		src="../css/css_review/assets/vendors/masonry-layout/masonry.pkgd.js"></script>
-	<script type="text/javascript"
-		src="../css/css_review/assets/vendors/jquery.waypoints/jquery.waypoints.min.js"></script>
-	<script type="text/javascript"
-		src="../css/css_review/assets/vendors/swiper/swiper.jquery.js"></script>
-	<script type="text/javascript"
-		src="../css/css_review/assets/vendors/menu/menu.js"></script>
-	<script type="text/javascript"
-		src="../css/css_review/assets/vendors/typed/typed.min.js"></script>
-	<!-- App-->
+<!-- 본문시작 -->
+<br>
+	<table class="w3-table" style="width:60%; height:50% ;margin:0 auto;">
+		
+		<tr>
+			<td colspan="3">
+		 	</td>
+		</tr>
+		
+	<!-- 게시글 시작 -->	
 
-	<script type="text/javascript"
-		src="../css/css_review/assets/js/main.js"></script>
+	<c:choose>
+		<c:when test="${empty list }">
+		 	<tr>
+		 		<td colspan="3">
+		 			등록된 게시글이 없습니다.
+		 		</td>
+		 	</tr>
+		</c:when>
+	
+	
+	
+	<c:otherwise>
+		
+		<c:set var="i" value="0" />
+		<c:set var="j" value="3" />
+
+		<c:forEach var="dto" items="${list }">
+		
+		<c:if test="${i%j==0 }">
+			<tr>
+		</c:if>
+		
+			<td>
+				<div class="w3-card-4" style="width: 310px;">
+					<div class="head">
+						<!-- 제목, id -->
+						<span style="float:left;"><h4><b>${dto.re_title }</b></h4></span>
+							<c:if test="${util:newimg(dto.re_wdate)}">
+				    			<img src="${root }/storage/review/img/new.gif" width="20px">
+				  			</c:if>
+						<span style="float:right;">
+	          					<span class="glyphicon glyphicon-thumbs-up">
+	          					
+	          					</span>
+	       					 </a>
+								추천수(${dto.re_like })
+						</span>
+					</div>
+					
+					<div class="file">
+					<a href="javascript:read('${dto.re_num}')">
+						<img src="${root }/storage/review/img/${dto.re_filename}" style="width:310px; height:150px; display:block;" class="w3-hover-opacity" align="middle">
+					</a>
+					</div>
+				
+					      
+					      <div align="center" style="width:100%;">
+						      ${dto.re_content }
+					      </div>
+					      
+					      <div class="tcontent">
+					      
+					      <a href="javascript:read('${dto.re_num}')" rel="">by ${dto.s_id}${dto.c_id }님</a></span>
+							  <span class="glyphicon glyphicon-pencil"></span>
+							</a>
+							  &nbsp;
+							  <span style="float:right;">${dto.re_wdate }</span>
+					 	 </div>
+					 </div>
+				</div>
+			</td>
+			
+			  <c:if test="${i%j == j-1 }">
+                </tr>
+              </c:if>
+		   	<c:set var="i" value="${i+1 }" />
+
+			</c:forEach>
+			
+		</c:otherwise>
+	</c:choose>
+	</table>
+	
+	<br>
+	<DIV class='bottom'>
+    	${paging }
+    </DIV>
+    <br>
+	
+	
+
+
 </body>
 </html>
