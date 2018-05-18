@@ -1,7 +1,9 @@
-package www;
+package spring.model.gobook;
 
 import java.util.List;
 import java.util.Map;
+
+import spring.model.freeboard.FreeboardDTO;
 
 public interface DAOSTDInter {
 	
@@ -16,5 +18,7 @@ public interface DAOSTDInter {
 	boolean delete(Object pk) throws Exception;
 
 	int total(Map map) throws Exception;
+
+	
 
 }

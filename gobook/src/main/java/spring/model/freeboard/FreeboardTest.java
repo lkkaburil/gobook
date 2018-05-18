@@ -12,12 +12,12 @@ public class FreeboardTest {
 		
 		FreeboardDAO dao = new FreeboardDAO();
 		
-		//read(dao);
+		read(dao);
         //create(dao);
 		//update(dao);
 		//delete(dao);
 		//list(dao);
-		total(dao);
+		//total(dao);
 	}
 	
 	private static void total(FreeboardDAO dao) {
@@ -83,7 +83,7 @@ public class FreeboardTest {
 
 	
 	private static void read(FreeboardDAO dao) {
-		int f_num = 1;
+		int f_num = 3;
 		
 		FreeboardDTO dto = dao.read(f_num);
 		

@@ -18,9 +18,9 @@ import spring.model.freeboard_reply.Freeboard_replyDAO;
 public class Utility {
 	
 	
-	public static int rcount(int bbsno,Freeboard_replyDAO rdao) {
+	public static int rcount(int f_num,Freeboard_replyDAO rdao) {
 		
-		return rdao.total(bbsno);
+		return rdao.total(f_num);
 		
 	}
 	
@@ -209,7 +209,7 @@ public class Utility {
 
 		int _nowPage = (nowGrp - 1) * pagePerBlock; // 10개 이전 페이지로 이동
 		if (nowGrp >= 2) {
-			str.append("<span class='span_box_1'><A href='./list.do?col=" + col + "&word=" + word + "&nowPage="
+			str.append("<span class='span_box_1'><A href='./list?col=" + col + "&word=" + word + "&nowPage="
 					+ _nowPage + "'>이전</A></span>");
 		}
 
@@ -221,14 +221,14 @@ public class Utility {
 			if (nowPage == i) {
 				str.append("<span class='span_box_2'>" + i + "</span>");
 			} else {
-				str.append("<span class='span_box_1'><A href='./list.do?col=" + col + "&word=" + word + "&nowPage=" + i
+				str.append("<span class='span_box_1'><A href='./list?col=" + col + "&word=" + word + "&nowPage=" + i
 						+ "'>" + i + "</A></span>");
 			}
 		}
 
 		_nowPage = (nowGrp * pagePerBlock) + 1; // 10개 다음 페이지로 이동
 		if (nowGrp < totalGrp) {
-			str.append("<span class='span_box_1'><A href='./list.do?col=" + col + "&word=" + word + "&nowPage="
+			str.append("<span class='span_box_1'><A href='./list?col=" + col + "&word=" + word + "&nowPage="
 					+ _nowPage + "'>다음</A></span>");
 		}
 		str.append("</DIV>");
@@ -318,7 +318,7 @@ public class Utility {
 	}
 
 
-	public static String paging2(int totalRecord, int nPage, int recordPerPage, String url, int bbsno, int nowPage,
+	public static String paging2(int totalRecord, int nPage, int recordPerPage, String url, int f_num, int nowPage,
 			String col, String word) {
 		int pagePerBlock = 5; // 블럭당 페이지 수
 		int totalPage = (int) (Math.ceil((double) totalRecord / recordPerPage)); // 전체 페이지
@@ -360,7 +360,7 @@ public class Utility {
 
 		int _nPage = (nowGrp - 1) * pagePerBlock; // 10개 이전 페이지로 이동
 		if (nowGrp >= 2) {
-			str.append("<span class='span_box_1'><A href='"+url+"?bbsno="+ bbsno +"&nPage="+_nPage+"&col=" + col + "&word=" + word + "&nowPage="
+			str.append("<span class='span_box_1'><A href='"+url+"?f_num="+ f_num +"&nPage="+_nPage+"&col=" + col + "&word=" + word + "&nowPage="
 					+ nowPage + "'>이전</A></span>");
 		}
 
@@ -372,14 +372,14 @@ public class Utility {
 			if (nPage == i) {
 				str.append("<span class='span_box_2'>" + i + "</span>");
 			} else {
-				str.append("<span class='span_box_1'><A href='"+url+"?bbsno="+ bbsno +"&nowPage="+nowPage+"&col=" + col + "&word=" + word + "&nPage=" + i
+				str.append("<span class='span_box_1'><A href='"+url+"?f_num="+ f_num +"&nowPage="+nowPage+"&col=" + col + "&word=" + word + "&nPage=" + i
 						+ "'>" + i + "</A></span>");
 			}
 		}
 
 		_nPage = (nowGrp * pagePerBlock) + 1; // 10개 다음 페이지로 이동
 		if (nowGrp < totalGrp) {
-			str.append("<span class='span_box_1'><A href='"+url+"?bbsno="+ bbsno +"&nPage="+_nPage+"&col=" + col + "&word=" + word + "&nowPage="
+			str.append("<span class='span_box_1'><A href='"+url+"?f_num="+ f_num +"&nPage="+_nPage+"&col=" + col + "&word=" + word + "&nowPage="
 					+ nowPage + "'>다음</A></span>");
 		}
 		str.append("</DIV>");
