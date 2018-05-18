@@ -277,10 +277,10 @@ var id, col, word, nowPage;
 		$("#createbtn").css({"background-color":"#f4f4f4", "color":"#a5a5a5"});
 		$("#message_content").append("<tr><td style='text-align:left'> 받을 아이디</td><tr><td><input type='text' id='msgid' required></td><tr>");
 		$("#message_content").append("<tr><td style='text-align:left'> 내용</td><tr><td><textarea cols='50' rows='7' id='msgcontent' required></textarea></td><tr>");
-		$("#message_etc").append("<button type='button' onclick='mcreateProc()'>보내기</button>");		
+		$("#message_etc").append("<button type='button' onclick='mcreateproc()`	z'>보내기</button>");		
 	}
 	
-	function mcreateProc() {
+	function mcreateproc() {
 		sendid = id;
 		receiveid = $("#msgid").val();
 		content = $("#msgcontent").val();
@@ -294,6 +294,17 @@ var id, col, word, nowPage;
 			alert("자기 자신에게 쪽지를 보낼 수 없습니다.");
 			return;
 		}
+
+//		###아이디 체크
+//		$.post("member/idcheck", {
+//			id: receiveid
+//		}, function(flag, textSt){
+//			if(!flag) {
+//				alert("존재하지 않는 아이디 입니다.");
+//				return;
+//			}
+//		});
+		
 		
 		$.post("message/create", {
 			sid: sendid,

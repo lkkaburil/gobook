@@ -1,4 +1,6 @@
 <!DOCTYPE HTML>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="root" value="${pageContext.request.contextPath }"/>
 <!--
 	Future Imperfect by HTML5 UP
 	html5up.net | @ajlkn
@@ -11,7 +13,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="top/assets/css/main.css" />
-		<link rel="stylesheet" href="top/assets/css/message.css"/>
+		<link rel="stylesheet" href="${root}/resources/css/message.css"/>
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
@@ -124,10 +126,10 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="top/assets/js/jquery.min.js"></script>
+			<script src="${root}/resources/js/jquery.min.js"></script>
 			<script src="top/assets/js/skel.min.js"></script>
 			<script src="top/assets/js/util.js"></script>
-			<script src="top/assets/js/message.js"/></script>
+			<script src="${root}/resources/js/message.js"/></script>
 	
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="top/assets/js/main.js"></script>
